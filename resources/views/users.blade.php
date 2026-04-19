@@ -18,25 +18,13 @@
         </div>
 
         <!-- Menu -->
-        <div class="flex-1 p-4 space-y-3">
-
-            <a href="#" class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-sky-100 hover:text-sky-700 transition">
-                Dashboard
-            </a>
-
-            <a href="users" class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-sky-100 hover:text-sky-700 transition">
-               👥 Users
-            </a>
-
-            <a href="leave" class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-sky-100 hover:text-sky-700 transition">
-               📁 Leave  Applications 
-            </a>
-
-            <a href="#" class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-sky-100 hover:text-sky-700 transition">
-                Reports
-            </a>
-
-        </div>
+    <div class="flex-1 p-4 space-y-3">
+        <a href="/logout" class="block px-4 py-2 rounded-lg hover:bg-sky-100">🚪 Logout</a>
+        <a href="/users" class="block px-4 py-2 rounded-lg hover:bg-sky-100">👥 Employees</a>
+        <a href="/leave" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📝 Pending Leave Approvals</a>
+        <a href="/approved" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📋 Approved Leaves</a>
+     
+    </div>
 
         <!-- Footer -->
         <div class="p-4 border-t border-sky-200 text-sm text-gray-400 text-center">

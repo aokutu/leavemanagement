@@ -86,7 +86,7 @@ function deleteUser(name) {
         <a href="/users" class="block px-4 py-2 rounded-lg hover:bg-sky-100">👥 Employees</a>
         <a href="/leave" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📝 Pending Leave Approvals</a>
         <a href="/approved" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📋 Approved Leaves</a>
-        <a href="/history" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📅 Leave History</a>
+     
     </div>
 
 </div>

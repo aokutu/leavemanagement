@@ -259,9 +259,9 @@ Route::get('/leave',  function (Request $request) {
         dd("NOT FOUND AT: " . $file);
     }
 
-    $users = json_decode(file_get_contents($file), true);
+    $pendingleaves = json_decode(file_get_contents($file), true);
 
-    return view('leave', compact('users')); 
+    return view('leave', compact('pendingleaves')); 
     
 });
 

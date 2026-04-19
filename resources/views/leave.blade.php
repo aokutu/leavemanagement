@@ -80,13 +80,12 @@ function deleteUser(name) {
     <div class="p-6 text-center border-b border-sky-200">
         <h1 class="text-2xl font-bold text-sky-700">My App</h1>
     </div>
-
-    <div class="flex-1 p-4 space-y-3">
+  <div class="flex-1 p-4 space-y-3">
         <a href="/logout" class="block px-4 py-2 rounded-lg hover:bg-sky-100">🚪 Logout</a>
         <a href="/users" class="block px-4 py-2 rounded-lg hover:bg-sky-100">👥 Employees</a>
-        <a href="/leave" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📝 Pending Leave Approvals </a>
-        <a href="/management" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📋 Approved Leaves</a>
-        <a href="/history" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📅 Leave History</a>
+        <a href="/leave" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📝 Pending Leave Approvals</a>
+        <a href="/approved" class="block px-4 py-2 rounded-lg hover:bg-sky-100">📋 Approved Leaves</a>
+     
     </div>
 
 </div>
@@ -128,34 +127,31 @@ function deleteUser(name) {
 
                 <tbody class="text-gray-700">
 
-                @foreach($users as $user)
+               @foreach($pendingleaves as $pendingleave)
+<tr class="border-t">
+    <td class="px-4 py-2">👤   {{ $pendingleave['employee'] }} </td>        <!-- Employee name -->
+    <td class="px-4 py-2">  {{ $pendingleave['category'] }} </td>           <!-- Leave type -->
+    
+    <td class="text-center"> {{ $pendingleave['from'] }}</td>             <!-- From date -->
+    <td class="text-center"> {{ $pendingleave['to'] }}</td>               <!-- To date -->
+    
+    <td class="text-center">
+    @php
+        $date1 = new DateTime($pendingleave['from']);
+        $date2 = new DateTime($pendingleave['to']);
+        $diff = $date1->diff($date2);
+    @endphp
 
-                <tr class="border-t">
-                    <td class="px-4 py-2">👤 {{ $user['user'] }}</td>
-                    <td class="px-4 py-2">{{ $user['leave'] }}</td>
+    {{ $diff->days }}
+</td> 
 
-                    <td class="text-center">
-                        {{ $user['permissions']['from'] ? '✅' : '❌' }}
-                    </td>
-
-                    <td class="text-center">
-                        {{ $user['permissions']['to'] ? '✅' : '❌' }}
-                    </td>
-
-                    <td class="text-center">
-                       10
-                    </td>
-
-                    <!-- CLICKABLE DELETE CELL -->
-                  
-
-                    <td class="text-center space-x-2">
-                        <button onclick="editUser('{{ $user['id'] }}')" class="text-sky-600">✅</button>
-                        <button onclick="deleteUser('{{ $user['id'] }}')" class="text-red-600">🗑️</button>
-                    </td>
-                </tr>
-
-                @endforeach
+    
+    <td class="text-center space-x-2">
+        <button onclick="editUser(' {{ $pendingleave['id'] }}')" class="text-sky-600 hover:underline">✅</button>
+        <button onclick="deleteUser('  {{ $pendingleave['id'] }} ')" class="text-red-600 hover:underline">🗑️</button>
+    </td>
+</tr>
+@endforeach
 
                 </tbody>
 
