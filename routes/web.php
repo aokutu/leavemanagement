@@ -236,6 +236,21 @@ Route::get('/users', function() {
  return view('dashboard', compact('users'));
 });
 
+
+
+
+Route::get('/approved', function() {
+
+
+     $file = storage_path('app/data/approved.json');
+
+       $approvedleaves = file_exists($file) ? json_decode(file_get_contents($file), true): [];
+
+ return view('approved', compact('approvedleaves'));
+});
+
+
+
 Route::get('/leave',  function (Request $request) { 
 
  $file = storage_path('app/data/pendingleave.json');
