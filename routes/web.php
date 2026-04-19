@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,6 +29,7 @@ Route::get('/home', function() {
    //return  $n;
    return view('home', ['name' => $name]);
 });
+
 
 
 Route::get('/json', function() {
@@ -59,6 +60,69 @@ Route::get('/text', function() {
 Route::get('/form1', function() {
     $name1 = "NEW NAME";
     return view('form1',['name1' => $name1 ]); // loads resources/views/mypage.blade.php
+});
+
+
+Route::post('/processform', function (Request $request) {
+
+    // ✅ Validation
+    $request->validate([
+        'name1' => 'required|min:3'
+    ], [
+        'name1.min' => 'Name must be at least 3 characters long.',
+    ]);
+
+    // ✅ Get input safely
+    $name1 = $request->input('name1');
+
+    return view('form1', ['name1' => $name1]); 
+}); 
+
+
+
+Route::get('/test', function () {
+    return "Route reached";
+});
+
+
+Route::get('/andrewx', function () {
+    return "ANDREWX";
+})->middleware('simplemsg');
+
+
+
+
+Route::get('/names/{name?}', function (Request $request, $name = 'Guest') {
+    return "Hello, $name";
+});
+
+Route::get('/test-middleware', function() {
+    $kernel = app(\App\Http\Kernel::class);
+    dd($kernel->getRouteMiddleware());
+});
+
+Route::get('/HELLO', function () {
+    return "HELLO";
+})->middleware('Hellomiddleware');
+
+
+Route::get('/TESTNEW', function () {
+    return "TEST NEW" ;
+}) ->middleware('Testnew'); 
+
+
+use App\Http\Controllers\PostController;
+
+Route::get('/posts', [PostController::class, 'index']);
+
+use App\Http\Controllers\TestController;
+
+Route::get('/tests', [TestController::class, 'index']);
+*/
+
+
+Route::get('/', function() {
+    return view('loggin');
 });
 
 Route::get('/loggin', function() {
@@ -186,66 +250,3 @@ Route::get('/leave',  function (Request $request) {
     
 });
 
-
-
-Route::post('/processform', function (Request $request) {
-
-    // ✅ Validation
-    $request->validate([
-        'name1' => 'required|min:3'
-    ], [
-        'name1.min' => 'Name must be at least 3 characters long.',
-    ]);
-
-    // ✅ Get input safely
-    $name1 = $request->input('name1');
-
-    return view('form1', ['name1' => $name1]); 
-}); 
-
-Route::get('dashboard', function(){
- 
-     return 'dashboardxxxx'; 
-
-});
-
-
-
-Route::get('/test', function () {
-    return "Route reached";
-});
-
-
-Route::get('/andrewx', function () {
-    return "ANDREWX";
-})->middleware('simplemsg');
-
-
-
-
-Route::get('/names/{name?}', function (Request $request, $name = 'Guest') {
-    return "Hello, $name";
-});
-
-Route::get('/test-middleware', function() {
-    $kernel = app(\App\Http\Kernel::class);
-    dd($kernel->getRouteMiddleware());
-});
-
-Route::get('/HELLO', function () {
-    return "HELLO";
-})->middleware('Hellomiddleware');
-
-
-Route::get('/TESTNEW', function () {
-    return "TEST NEW" ;
-}) ->middleware('Testnew'); 
-
-
-use App\Http\Controllers\PostController;
-
-Route::get('/posts', [PostController::class, 'index']);
-
-use App\Http\Controllers\TestController;
-
-Route::get('/tests', [TestController::class, 'index']);
