@@ -1,0 +1,8 @@
+LEAVE  MANAGEMENT SYSTEM 
+
+HOW  TO RUN 
+1 Using the  Docker files  make an  image and  run  it  
+2 Run  the Container  of that  image 
+3 Open  browser load http://localhost:8000/ 
+4 user name Andrew password admin123
+
