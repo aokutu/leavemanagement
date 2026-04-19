@@ -113,7 +113,7 @@ function deleteUser(name) {
 
             <table class="min-w-full">
 
-                <thead class="bg-sky-100 text-sky-800 sticky top-0">Pending Leaves
+                <thead class="bg-sky-100 text-sky-800 sticky top-0">
                     <tr>
                         <th class="px-4 py-2 text-left">Employer</th>
                         <th class="px-4 py-2 text-left">Leave Type </th>

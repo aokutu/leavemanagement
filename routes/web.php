@@ -143,7 +143,6 @@ Route::get('/loggout', function() {
 
 
 
-
 Route::post('/newemployee',  function (Request $request)  {
 
  $file = storage_path('app/data/users.json');
