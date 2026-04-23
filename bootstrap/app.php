@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         'simplemsg' => \App\Http\Middleware\Simplemsg::class,
         'Hellomiddleware' =>   \App\Http\Middleware\Hellomiddleware::class,
         'Testnew' =>   \App\Http\Middleware\Testnew::class,
+        'CheckCreds' =>   \App\Http\Middleware\CheckCreds::class,
         
 
     ]);

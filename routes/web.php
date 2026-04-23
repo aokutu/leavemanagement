@@ -132,7 +132,7 @@ return view('loggin');
 Route::get('/newregistration', function() {
 
      return view('newregistration'); 
-});
+})->middleware('CheckCreds');
 
 
 Route::get('/loggout', function() {
@@ -177,13 +177,16 @@ Route::post('/newemployee',  function (Request $request)  {
     file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
 
     return redirect()->back();
-});
+})->middleware('CheckCreds');
 
 
  Route::post('/processloggin', function (Request $request) {
 
     $name = $request->input('name');
+    session(['name' => $name]);
     $password = $request->input('password');
+
+     session(['password' => $password]);
 
     $file = storage_path('app/data/users.json');
 
@@ -209,7 +212,7 @@ Route::post('/newemployee',  function (Request $request)  {
 
     // ✅ IF FOUND → LOAD DASHBOARD
     return view('dashboard', compact('users'));
-}); 
+})->middleware('CheckCreds');
 
 Route::get('/logout', function () {
 
@@ -223,7 +226,7 @@ Route::get('/logout', function () {
 Route::get('/deleteUser', function() {
 
  return "delete employee"; 
-});
+})->middleware('CheckCreds');
 
 Route::get('/users', function() {
 
@@ -233,7 +236,7 @@ Route::get('/users', function() {
        $users = file_exists($file) ? json_decode(file_get_contents($file), true): [];
 
  return view('dashboard', compact('users'));
-});
+})->middleware('CheckCreds');
 
 
 
@@ -246,7 +249,7 @@ Route::get('/approved', function() {
        $approvedleaves = file_exists($file) ? json_decode(file_get_contents($file), true): [];
 
  return view('approved', compact('approvedleaves'));
-});
+})->middleware('CheckCreds');
 
 
 
@@ -262,5 +265,5 @@ Route::get('/leave',  function (Request $request) {
 
     return view('leave', compact('pendingleaves')); 
     
-});
+})->middleware('CheckCreds');
 
